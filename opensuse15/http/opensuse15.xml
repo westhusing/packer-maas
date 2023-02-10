@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+    <add-on t="map">
+        <add_on_others t="list">
+            <listentry t="map">
+                <alias>repo-backports-update</alias>
+                <media_url>http://download.opensuse.org/update/leap/15.4/backports/</media_url>
+                <name>Update repository of openSUSE Backports</name>
+                <priority t="integer">99</priority>
+                <product_dir>/</product_dir>
+            </listentry>
+            <listentry t="map">
+                <alias>repo-non-oss</alias>
+                <media_url>http://download.opensuse.org/distribution/leap/15.4/repo/non-oss/</media_url>
+                <name>Non-OSS Repository</name>
+                <priority t="integer">99</priority>
+                <product_dir>/</product_dir>
+            </listentry>
+            <listentry t="map">
+                <alias>repo-sle-update</alias>
+                <media_url>http://download.opensuse.org/update/leap/15.4/sle/</media_url>
+                <name>Update repository with updates from SUSE Linux Enterprise 15</name>
+                <priority t="integer">99</priority>
+                <product_dir>/</product_dir>
+            </listentry>
+            <listentry t="map">
+                <alias>repo-update-non-oss</alias>
+                <media_url>http://download.opensuse.org/update/leap/15.4/non-oss/</media_url>
+                <name>Update Repository (Non-Oss)</name>
+                <priority t="integer">99</priority>
+                <product_dir>/</product_dir>
+            </listentry>
+            <listentry t="map">
+                <alias>home-ae40515-branches-Cloud-Tools</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/ae40515:/branches:/Cloud:/Tools/15.4/</media_url>
+                <name>Branch project for package cloud-init</name>
+                <priority t="integer">99</priority>
+            </listentry>
+        </add_on_others>
+    </add-on>
+    <bootloader>
+        <global>
+            <append>splash=silent preempt=full mitigations=auto quiet showopts security=apparmor</append>
+            <cpu_mitigations>auto</cpu_mitigations>
+            <gfxmode>auto</gfxmode>
+            <hiddenmenu>false</hiddenmenu>
+            <os_prober>true</os_prober>
+            <secure_boot>true</secure_boot>
+            <terminal>gfxterm</terminal>
+            <timeout t="integer">8</timeout>
+            <trusted_grub>false</trusted_grub>
+            <update_nvram>true</update_nvram>
+            <xen_kernel_append>vga=gfx-1024x768x16</xen_kernel_append>
+        </global>
+        <loader_type>grub2</loader_type>
+    </bootloader>
+    <firewall>
+        <enable_firewall config:type="boolean">false</enable_firewall>
+        <start_firewall config:type="boolean">false</start_firewall>
+    </firewall>
+    <general>
+        <ask-list config:type="list" />
+        <mode>
+            <final_halt config:type="boolean">true</final_halt>
+            <confirm config:type="boolean">false</confirm>
+        </mode>
+        <proposals config:type="list" />
+        <signature-handling>
+            <accept_file_without_checksum config:type="boolean">true</accept_file_without_checksum>
+            <accept_non_trusted_gpg_key config:type="boolean">true</accept_non_trusted_gpg_key>
+            <accept_unknown_gpg_key config:type="boolean">true</accept_unknown_gpg_key>
+            <accept_unsigned_file config:type="boolean">true</accept_unsigned_file>
+            <accept_verification_failed config:type="boolean">false</accept_verification_failed>
+            <import_gpg_key config:type="boolean">true</import_gpg_key>
+        </signature-handling>
+        <storage />
+    </general>
+    <login_settings />
+    <networking>
+        <dhcp_options>
+            <dhclient_client_id />
+            <dhclient_hostname_option>AUTO</dhclient_hostname_option>
+        </dhcp_options>
+        <dns>
+            <dhcp_hostname config:type="boolean">false</dhcp_hostname>
+            <domain>maas.io</domain>
+            <hostname>opensuse</hostname>
+            <resolv_conf_policy>auto</resolv_conf_policy>
+            <write_hostname config:type="boolean">true</write_hostname>
+        </dns>
+        <interfaces config:type="list">
+            <interface>
+                <bootproto>dhcp</bootproto>
+                <device>eth0</device>
+                <dhclient_set_default_route>yes</dhclient_set_default_route>
+                <startmode>auto</startmode>
+                <usercontrol>no</usercontrol>
+            </interface>
+        </interfaces>
+        <keep_install_network config:type="boolean">false</keep_install_network>
+    </networking>
+    <partitioning config:type="list">
+        <drive>
+            <enable_snapshots config:type="boolean">false</enable_snapshots>
+            <initialize config:type="boolean">true</initialize>
+            <partitions config:type="list">
+                <partition>
+                    <create config:type="boolean">true</create>
+                    <filesystem config:type="symbol">ext4</filesystem>
+                    <format config:type="boolean">true</format>
+                    <mount>/</mount>
+                    <mountby config:type="symbol">device</mountby>
+                    <partition_id config:type="integer">131</partition_id>
+                    <partition_nr config:type="integer">1</partition_nr>
+                    <resize config:type="boolean">true</resize>
+                    <size>max</size>
+                </partition>
+            </partitions>
+            <use>all</use>
+        </drive>
+    </partitioning>
+    <report>
+        <errors>
+            <log config:type="boolean">true</log>
+            <show config:type="boolean">true</show>
+            <timeout config:type="integer">0</timeout>
+        </errors>
+        <messages>
+            <log config:type="boolean">true</log>
+            <show config:type="boolean">true</show>
+            <timeout config:type="integer">0</timeout>
+        </messages>
+        <warnings>
+            <log config:type="boolean">true</log>
+            <show config:type="boolean">true</show>
+            <timeout config:type="integer">0</timeout>
+        </warnings>
+        <yesno_messages>
+            <log config:type="boolean">true</log>
+            <show config:type="boolean">true</show>
+            <timeout config:type="integer">0</timeout>
+        </yesno_messages>
+    </report>
+  <services-manager t="map">
+    <default_target>graphical</default_target>
+    <services t="map">
+      <enable t="list">
+        <service>ModemManager</service>
+        <service>NetworkManager</service>
+        <service>NetworkManager-dispatcher</service>
+        <service>NetworkManager-wait-online</service>
+        <service>YaST2-Firstboot</service>
+        <service>YaST2-Second-Stage</service>
+        <service>apparmor</service>
+        <service>appstream-sync-cache</service>
+        <service>auditd</service>
+        <service>avahi-daemon</service>
+        <service>bluetooth</service>
+        <service>klog</service>
+        <service>chronyd</service>
+        <service>cron</service>
+        <service>cups</service>
+        <service>firewalld</service>
+        <service>display-manager</service>
+        <service>haveged</service>
+        <service>irqbalance</service>
+        <service>issue-generator</service>
+        <service>kbdsettings</service>
+        <service>lvm2-monitor</service>
+        <service>mcelog</service>
+        <service>nscd</service>
+        <service>postfix</service>
+        <service>purge-kernels</service>
+        <service>rsyslog</service>
+        <service>smartd</service>
+        <service>systemd-remount-fs</service>
+        <service>vgauthd</service>
+        <service>vmblock-fuse</service>
+        <service>vmtoolsd</service>
+      </enable>
+      <on_demand t="list">
+        <listentry>pcscd</listentry>
+      </on_demand>
+    </services>
+  </services-manager>
+  <software t="map">
+    <install_recommended t="boolean">true</install_recommended>
+    <instsource/>
+    <packages t="list">
+      <package>snapper</package>
+      <package>os-prober</package>
+      <package>openSUSE-release</package>
+      <package>numactl</package>
+      <package>kexec-tools</package>
+      <package>irqbalance</package>
+      <package>grub2</package>
+      <package>firewalld</package>
+      <package>e2fsprogs</package>
+      <package>chrony</package>
+      <package>autoyast2</package>
+      <package>NetworkManager</package>
+      <package>bash-completion</package>
+      <package>bcache-tools</package>
+      <package>btrfsprogs</package>
+      <package>bzip2</package>
+      <package>cloud-init</package>
+      <package>cryptsetup</package>
+      <package>gcc</package>
+      <package>glibc</package>
+      <package>jfsutils</package>
+      <package>kernel-default-devel</package>
+      <package>kexec-tools</package>
+      <package>lvm2</package>
+      <package>make</package>
+      <package>mdadm</package>
+      <package>openssh</package>
+      <package>perl</package>
+      <package>python3-configobj</package>
+      <package>python3-distro</package>
+      <package>python3-Jinja2</package>
+      <package>python3-jsonpatch</package>
+      <package>python3-jsonschema</package>
+      <package>python3-oauthlib</package>
+      <package>python3-PrettyTable</package>
+      <package>python3-PyYAML</package>
+      <package>python3-requests</package>
+      <package>sudo</package>
+      <package>tar</package>
+      <package>wget</package>
+      <package>xfsprogs</package>
+    </packages>
+    <patterns t="list">
+      <pattern>apparmor</pattern>
+      <pattern>base</pattern>
+      <pattern>basesystem</pattern>
+      <pattern>documentation</pattern>
+      <pattern>enhanced_base</pattern>
+      <pattern>fonts</pattern>
+      <pattern>fonts_opt</pattern>
+      <pattern>games</pattern>
+      <pattern>kde</pattern>
+      <pattern>kde_games</pattern>
+      <pattern>kde_internet</pattern>
+      <pattern>kde_multimedia</pattern>
+      <pattern>kde_office</pattern>
+      <pattern>kde_pim</pattern>
+      <pattern>kde_plasma</pattern>
+      <pattern>kde_utilities</pattern>
+      <pattern>kde_utilities_opt</pattern>
+      <pattern>kde_yast</pattern>
+      <pattern>laptop</pattern>
+      <pattern>minimal_base</pattern>
+      <pattern>multimedia</pattern>
+      <pattern>office</pattern>
+      <pattern>sw_management</pattern>
+      <pattern>x11</pattern>
+      <pattern>x11_enhanced</pattern>
+      <pattern>x11_yast</pattern>
+      <pattern>yast2_basis</pattern>
+      <pattern>yast2_desktop</pattern>
+    </patterns>
+    <products t="list">
+      <product>Leap</product>
+    </products>
+    <remove-packages t="list">
+        <package>adaptec-firmware</package>
+        <package>atmel-firmware</package>
+        <package>bash-doc</package>
+        <package>cifs-utils</package>
+        <package>cups-libs</package>
+        <package>ipw-firmware</package>
+        <package>mpt-firmware</package>
+        <package>postfix</package>
+        <package>samba-libs</package>
+        <package>ucode-intel</package>
+        <package>snapper</package>
+        <package>snapper-zypp-plugin</package>
+    </remove-packages>
+  </software>
+    <timezone>
+        <hwclock>UTC</hwclock>
+        <timezone>UTC</timezone>
+    </timezone>
+    <user_defaults>
+        <expire />
+        <group>100</group>
+        <groups>video,dialout</groups>
+        <home>/home</home>
+        <inactive>-1</inactive>
+        <shell>/bin/bash</shell>
+        <skel>/etc/skel</skel>
+        <umask>022</umask>
+    </user_defaults>
+    <users config:type="list">
+        <user>
+            <encrypted config:type="boolean">false</encrypted>
+            <fullname>root</fullname>
+            <gid>0</gid>
+            <home>/root</home>
+            <password_settings>
+                <expire />
+                <flag />
+                <inact />
+                <max />
+                <min />
+                <warn />
+            </password_settings>
+            <shell>/bin/bash</shell>
+            <uid>0</uid>
+            <user_password>!</user_password>
+            <username>root</username>
+        </user>
+    </users>
+    <scripts>
+        <chroot-scripts config:type="list">
+            <script>
+                <filename>cloud-init.sh</filename>
+                <interpreter>shell</interpreter>
+                <chrooted config:type="boolean">true</chrooted>
+                <source><![CDATA[
+#!/bin/sh
+systemctl enable cloud-init-local.service
+systemctl enable cloud-init.service
+systemctl enable cloud-config.service
+systemctl enable cloud-final.service
+]]>
+                </source>
+            </script>
+        </chroot-scripts>
+        <init-scripts config:type="list">
+            <script>
+                <filename>clean-persistent-net.sh</filename>
+                <source><![CDATA[
+#!/bin/sh
+cat< /dev/null > /etc/udev/rules.d/70-persistent-net.rules
+sed -i s/^root:[^:]*/root:*/ /etc/shadow
+rm -rf /root/.ssh
+rm -rf /root/.cache
+rm -rf /etc/ssh/ssh_host_*
+]]>
+                </source>
+            </script>
+        </init-scripts>
+    </scripts>
+</profile>
