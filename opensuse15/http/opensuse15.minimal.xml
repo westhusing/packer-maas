@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+    <add-on t="map">
+        <add_on_others t="list">
+            <listentry t="map">
+                <alias>home-westhusing-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/westhusing:/MAAS/15.4/</media_url>
+                <name>Packages required for MAAS</name>
+                <priority t="integer">99</priority>
+            </listentry>
+        </add_on_others>
+    </add-on>
+    <bootloader t="map">
+        <global t="map">
+            <append>splash=silent preempt=full mitigations=auto quiet security=apparmor</append>
+            <cpu_mitigations>auto</cpu_mitigations>
+            <hiddenmenu>false</hiddenmenu>
+            <os_prober>true</os_prober>
+            <secure_boot>false</secure_boot>
+            <terminal>console</terminal>
+            <timeout t="integer">0</timeout>
+            <trusted_grub>false</trusted_grub>
+            <update_nvram>true</update_nvram>
+        </global>
+        <loader_type>grub2</loader_type>
+    </bootloader>
+    <firewall t="map">
+        <enable_firewall t="boolean">false</enable_firewall>
+        <start_firewall t="boolean">false</start_firewall>
+    </firewall>
+    <login_settings />
+    <general t="map">
+        <mode t="map">
+            <final_halt t="boolean">true</final_halt>
+            <confirm t="boolean">false</confirm>
+        </mode>
+        <signature-handling>
+            <accept_file_without_checksum t="boolean">true</accept_file_without_checksum>
+            <accept_non_trusted_gpg_key t="boolean">true</accept_non_trusted_gpg_key>
+            <accept_unknown_gpg_key t="boolean">true</accept_unknown_gpg_key>
+            <accept_unsigned_file t="boolean">true</accept_unsigned_file>
+            <accept_verification_failed t="boolean">false</accept_verification_failed>
+            <import_gpg_key t="boolean">true</import_gpg_key>
+        </signature-handling>
+    </general>
+    <networking t="map">
+        <dhcp_options>
+            <dhclient_client_id />
+            <dhclient_hostname_option>AUTO</dhclient_hostname_option>
+        </dhcp_options>
+        <dns t="map">
+            <dhcp_hostname t="boolean">false</dhcp_hostname>
+            <domain>maas.io</domain>
+            <hostname>opensuse</hostname>
+            <resolv_conf_policy>auto</resolv_conf_policy>
+            <write_hostname t="boolean">true</write_hostname>
+        </dns>
+        <interfaces t="list">
+            <interface>
+                <bootproto>dhcp</bootproto>
+                <device>eth0</device>
+                <dhclient_set_default_route>yes</dhclient_set_default_route>
+                <startmode>auto</startmode>
+                <usercontrol>no</usercontrol>
+            </interface>
+        </interfaces>
+        <keep_install_network t="boolean">false</keep_install_network>
+    </networking>
+    <partitioning t="list">
+        <drive t="map">
+            <enable_snapshots t="boolean">false</enable_snapshots>
+            <initialize t="boolean">true</initialize>
+            <partitions t="list">
+                <partition t="map">
+                    <create t="boolean">true</create>
+                    <filesystem t="symbol">ext4</filesystem>
+                    <format t="boolean">true</format>
+                    <mount>/</mount>
+                    <mountby t="symbol">device</mountby>
+                    <partition_id t="integer">131</partition_id>
+                    <partition_nr t="integer">1</partition_nr>
+                    <resize t="boolean">true</resize>
+                    <size>max</size>
+                </partition>
+            </partitions>
+            <use>all</use>
+        </drive>
+    </partitioning>
+    <report>
+        <errors>
+            <log t="boolean">true</log>
+            <show t="boolean">true</show>
+            <timeout t="integer">0</timeout>
+        </errors>
+        <messages>
+            <log t="boolean">true</log>
+            <show t="boolean">true</show>
+            <timeout t="integer">0</timeout>
+        </messages>
+        <warnings>
+            <log t="boolean">true</log>
+            <show t="boolean">true</show>
+            <timeout t="integer">0</timeout>
+        </warnings>
+        <yesno_messages>
+            <log t="boolean">true</log>
+            <show t="boolean">true</show>
+            <timeout t="integer">0</timeout>
+        </yesno_messages>
+    </report>
+    <services-manager t="map">
+        <default_target>multi-user</default_target>
+        <services t="map">
+            <disable t="list" />
+            <enable t="list">
+                <service>sshd</service>
+            </enable>
+        </services>
+    </services-manager>
+    <software t="map">
+        <products t="list">
+            <product>Leap</product>
+        </products>
+        <packages t="list">
+            <package>cloud-init</package>
+            <package>efibootmgr</package>
+            <package>grub2-branding-SLE</package>
+            <package>grub2-x86_64-efi</package>
+        </packages>
+        <patterns t="list">
+            <pattern>base</pattern>
+            <pattern>minimal_base</pattern>
+        </patterns>
+    </software>
+    <timezone>
+        <hwclock>UTC</hwclock>
+        <timezone>UTC</timezone>
+    </timezone>
+    <user_defaults>
+        <expire />
+        <group>100</group>
+        <groups>video,dialout</groups>
+        <home>/home</home>
+        <inactive>-1</inactive>
+        <shell>/bin/bash</shell>
+        <skel>/etc/skel</skel>
+        <umask>022</umask>
+    </user_defaults>
+    <users t="list">
+        <user>
+            <encrypted t="boolean">false</encrypted>
+            <fullname>root</fullname>
+            <gid>1000</gid>
+            <home>/root</home>
+            <password_settings>
+                <expire />
+                <flag />
+                <inact />
+                <max />
+                <min />
+                <warn />
+            </password_settings>
+            <shell>/bin/bash</shell>
+            <uid>0</uid>
+            <user_password>Pass4Root</user_password>
+            <username>root</username>
+        </user>
+    </users>
+    <scripts>
+        <pre-scripts config:type="list">
+            <script>
+                <filename>test.sh</filename>
+                <interpreter>shell</interpreter>
+                <source><![CDATA[
+#!/bin/sh
+echo "T"
+echo "H"
+echo "I"
+echo "S"
+echo " "
+echo "I"
+echo "S"
+echo " "
+echo "A"
+echo " "
+echo "C"
+echo "H"
+echo "R"
+echo "O"
+echo "O"
+echo "T"
+echo " "
+echo "S"
+echo "C"
+echo "R"
+echo "I"
+echo "P"
+echo "T"
+echo " "
+echo "T"
+echo "E"
+echo "S"
+echo "T"
+echo "!"
+]]>
+                </source>
+            </script>
+        </pre-scripts>
+        <chroot-scripts t="list">
+            <script>
+                <filename>cloud-init.sh</filename>
+                <interpreter>shell</interpreter>
+                <chrooted t="boolean">true</chrooted>
+                <source><![CDATA[
+#!/bin/sh
+systemctl enable cloud-init-local.service
+systemctl enable cloud-init.service
+systemctl enable cloud-config.service
+systemctl enable cloud-final.service
+]]>
+                </source>
+            </script>
+        </chroot-scripts>
+        <init-scripts t="list">
+            <script>
+                <filename>clean-persistent-net.sh</filename>
+                <source><![CDATA[
+#!/bin/sh
+cat< /dev/null > /etc/udev/rules.d/70-persistent-net.rules
+sed -i s/^root:[^:]*/root:*/ /etc/shadow
+rm -rf /root/.ssh
+rm -rf /root/.cache
+rm -rf /etc/ssh/ssh_host_*
+]]>
+                </source>
+            </script>
+        </init-scripts>
+    </scripts>
+</profile>

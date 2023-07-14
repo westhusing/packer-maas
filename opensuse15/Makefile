@@ -1,5 +1,5 @@
 PACKER ?= packer
-ISO ?= openSUSE-Leap-15.4-CR-DVD-x86_64-Build31.98-Media.iso
+ISO ?= openSUSE-Leap-15.4-CR-DVD-x86_64-Build32.1-Media.iso
 
 .PHONY: all clean
 

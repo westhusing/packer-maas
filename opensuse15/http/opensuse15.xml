@@ -32,9 +32,75 @@
                 <product_dir>/</product_dir>
             </listentry>
             <listentry t="map">
+                <alias>Cloud-Tools-Experimental</alias>
+                <media_url>https://download.opensuse.org/repositories/Cloud:/Tools/15.4/</media_url>
+                <name>Cloud Tools Experimental (for growpart needed by cloud-init)</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>Mozilla-Factory-Experimental</alias>
+                <media_url>https://download.opensuse.org/repositories/mozilla:/Factory/15.4/</media_url>
+                <name>Mozilla Firefox Experimental</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
                 <alias>home-ae40515-branches-Cloud-Tools</alias>
                 <media_url>https://download.opensuse.org/repositories/home:/ae40515:/branches:/Cloud:/Tools/15.4/</media_url>
                 <name>Branch project for package cloud-init</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-wicked-branches-qubes-build</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/wicked:/qubes-build/15.4/</media_url>
+                <name>Branch project for python3-distro, python3-Jinja2, python3-jsonschema and python3-prettytable</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-wicked-branches-qubes-build-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/wicked:/qubes-build:/15.4/15.4/</media_url>
+                <name>Branch project for python3-jsonschema, python3-oauthlib, and python3-PyYAML</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-ecsos-branches-python-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/ecsos:/python/15.4/</media_url>
+                <name>Branch project for python3-jsonpatch</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-ecsos-branches-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/ecsos/15.4/</media_url>
+                <name>Branch project for efibootmgr</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-frispete-branches-python-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/frispete:/python/15.4/</media_url>
+                <name>Branch project for python3-oauthlib</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-regataos-branches-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/regataos/15.4/</media_url>
+                <name>Branch project for gcc</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-dsterba-branches-kernel-stable-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/dsterba:/kernel:/stable/15.4/</media_url>
+                <name>Branch project for dwarves (needed by kernel-default-devel)</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-suyedy-branches-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/suyedy/15.4/</media_url>
+                <name>Branch project for grub2-branding-SLE (needed at deploy time by MAAS)</name>
+                <priority t="integer">99</priority>
+            </listentry>
+            <listentry t="map">
+                <alias>home-rwill-branches-Base-System-15.4</alias>
+                <media_url>https://download.opensuse.org/repositories/home:/rwill:/branches:/Base:/System/15.4/</media_url>
+                <name>Branch project for grub2-x86_64-efi (needed at deploy time by MAAS)</name>
                 <priority t="integer">99</priority>
             </listentry>
         </add_on_others>
@@ -55,10 +121,6 @@
         </global>
         <loader_type>grub2</loader_type>
     </bootloader>
-    <firewall>
-        <enable_firewall config:type="boolean">false</enable_firewall>
-        <start_firewall config:type="boolean">false</start_firewall>
-    </firewall>
     <general>
         <ask-list config:type="list" />
         <mode>
@@ -152,36 +214,17 @@
         <service>NetworkManager-wait-online</service>
         <service>YaST2-Firstboot</service>
         <service>YaST2-Second-Stage</service>
-        <service>apparmor</service>
-        <service>appstream-sync-cache</service>
         <service>auditd</service>
-        <service>avahi-daemon</service>
-        <service>bluetooth</service>
-        <service>klog</service>
         <service>chronyd</service>
-        <service>cron</service>
-        <service>cups</service>
         <service>firewalld</service>
-        <service>display-manager</service>
         <service>haveged</service>
         <service>irqbalance</service>
         <service>issue-generator</service>
         <service>kbdsettings</service>
         <service>lvm2-monitor</service>
-        <service>mcelog</service>
-        <service>nscd</service>
-        <service>postfix</service>
         <service>purge-kernels</service>
-        <service>rsyslog</service>
-        <service>smartd</service>
         <service>systemd-remount-fs</service>
-        <service>vgauthd</service>
-        <service>vmblock-fuse</service>
-        <service>vmtoolsd</service>
       </enable>
-      <on_demand t="list">
-        <listentry>pcscd</listentry>
-      </on_demand>
     </services>
   </services-manager>
   <software t="map">
@@ -195,6 +238,8 @@
       <package>kexec-tools</package>
       <package>irqbalance</package>
       <package>grub2</package>
+      <package>grub2-x86_64-efi</package>
+      <package>grub2-branding-SLE</package>
       <package>firewalld</package>
       <package>e2fsprogs</package>
       <package>chrony</package>
@@ -206,6 +251,7 @@
       <package>bzip2</package>
       <package>cloud-init</package>
       <package>cryptsetup</package>
+      <package>efibootmgr</package>
       <package>gcc</package>
       <package>glibc</package>
       <package>jfsutils</package>

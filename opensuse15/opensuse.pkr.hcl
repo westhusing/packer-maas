@@ -1,5 +1,5 @@
 packer {
-  required_version = ">= 1.7.0"
+  required_version = ">= 1.9.0"
   required_plugins {
     qemu = {
       version = "~> 1.0"
@@ -20,7 +20,7 @@ variable "opensuse15_iso_path" {
 }
 
 source "qemu" "opensuse15" {
-  boot_command     = ["<esc><enter><wait>", "linux netdevice=eth0 netsetup=dhcp install=cd:/<wait>", " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/opensuse15.xml<wait>", " textmode=1<wait>", "<enter><wait>"]
+  boot_command     = ["<esc><enter><wait>", "linux netdevice=eth0 netsetup=dhcp install=cd:/<wait>", " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/opensuse15.minimal.xml<wait>", " textmode=1<wait>", "<enter><wait>"]
   boot_wait        = "3s"
   communicator     = "none"
   disk_size        = "4G"
@@ -30,7 +30,10 @@ source "qemu" "opensuse15" {
   iso_url          = var.opensuse15_iso_path
   memory           = 4096
   qemuargs         = [["-serial", "stdio"], ["-cpu", "host"]]
-  shutdown_timeout = "15m"
+  shutdown_timeout = "20m"
+  vnc_bind_address = "0.0.0.0"
+  vnc_port_min     = "5963"
+  vnc_port_max     = "5963"
 }
 
 build {
